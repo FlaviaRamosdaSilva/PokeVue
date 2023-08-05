@@ -1,0 +1,6 @@
+
+ <ul>
+<li v-for="pokemon in pokemons.name" :key="pokemon.name">
+{{ pokemon.name }}
+</li>
+</ul>

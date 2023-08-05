@@ -30,14 +30,15 @@ onMounted(() => {
           </div>
         </div>
 
+        
         <div class="col-sm-12 col-md-6">
-          <ul>
-            <li v-for="pokemon in pokemons.name" :key="pokemon.name">
-              {{ pokemon.name }}
-            </li>
-          </ul>
-        </div>
+          <div class="card">
+         <ListPokemons v-for="pokemon in pokemons.name"
+         :key="pokemon.name"></ListPokemons>
 
+        </div>
+        </div>
+        
       </div>
     </div>
   </main>
