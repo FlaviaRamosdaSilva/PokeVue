@@ -5,8 +5,9 @@ import CardPokemonSelected from '../components/CardPokemonSelected.vue';
 let urlBaseSvg = ref("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/");
 
 let pokemons = reactive({ name: [] });
-let searchPokemonField = ref("")
-let pokemonSelected = reactive(ref())
+let searchPokemonField = ref("");
+let pokemonSelected = reactive(ref());
+let loading = ref(false);
 
 
 onMounted(() => {
@@ -25,9 +26,12 @@ const pokemonsFiltered = computed(()=>{
 })
 
 const selectPokemon = async (pokemon) =>{
+  loading.value = true;
   await fetch(pokemon.url)
   .then(res => res.json())  
-  .then(res => pokemonSelected.value = res);
+  .then(res => pokemonSelected.value = res)
+  .catch(err => alert(err))
+  .finally( ()=> loading.value = false)
   console.log(pokemonSelected.value)
 }
 
@@ -45,12 +49,13 @@ const selectPokemon = async (pokemon) =>{
           :xp="pokemonSelected?.base_experience"
           :height="pokemonSelected?.height"
           :img="pokemonSelected?.sprites.other.dream_world.front_default"
+          :loading="loading"
           />
         </div>
 
 
         <div class="col-sm-12 col-md-6">
-          <div class="card">
+          <div class="card card-list">
             <div class="card-body row">
 
               <div class="mb-3">
@@ -74,4 +79,12 @@ const selectPokemon = async (pokemon) =>{
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+.card-list {
+  max-height: 450px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+
+</style>

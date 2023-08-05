@@ -1,10 +1,11 @@
 <script setup>
-const pokemon = defineProps([ "name", "xp", "height", "img" ]);
+const pokemon = defineProps([ "name", "xp", "height", "img", "loading" ]);
 
 </script>
 
 <template>
-    <div class="card">
+    <div class="card CardPokemonSelected"
+    :class=" loading ? '' : 'animate__animated animate__flipInY'">
         
         <img :src="pokemon.img"
         class="card-img-top pt-2"
@@ -32,4 +33,11 @@ const pokemon = defineProps([ "name", "xp", "height", "img" ]);
     </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.CardPokemonSelected {
+    background: rgb(234, 234, 242);
+    background: radial-gradient(circle, rgba(210, 210, 235, 0.821) 9%, rgba(116, 221, 195, 0.88) 51%, rgba(171, 197, 168, 0.888) 94%);
+    
+}
+
+</style>
