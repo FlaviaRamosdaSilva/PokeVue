@@ -1,10 +1,13 @@
 <script setup>
 import { onMounted, reactive, ref, computed } from 'vue';
 import ListPokemons from '../components/ListPokemons.vue';
+import CardPokemonSelected from '../components/CardPokemonSelected.vue';
 let urlBaseSvg = ref("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/");
 
 let pokemons = reactive({ name: [] });
 let searchPokemonField = ref("")
+let pokemonSelected = reactive(ref())
+
 
 onMounted(() => {
   fetch("https://pokeapi.co/api/v2/pokemon?offset=0&limit=200")
@@ -17,10 +20,16 @@ const pokemonsFiltered = computed(()=>{
     return pokemons.name.filter(pokemon=>
       pokemon.name.toLowerCase().includes(searchPokemonField.value.toLowerCase())
     )
-  } console.log(pokemonsFiltered)
+  } 
   return pokemons.name;
-  
 })
+
+const selectPokemon = async (pokemon) =>{
+  await fetch(pokemon.url)
+  .then(res => res.json())  
+  .then(res => pokemonSelected.value = res);
+  console.log(pokemonSelected.value)
+}
 
 </script>
 
@@ -31,15 +40,12 @@ const pokemonsFiltered = computed(()=>{
       <div class="row mt-4">
 
         <div class="col-sm-12 col-md-6">
-          <div class="card" style="width: 18rem;">
-            <img src="https://seeklogo.com/images/P/Pikachu-logo-D0AAA93F17-seeklogo.com.png" class="card-img-top"
-              alt="Pikachu">
-            <div class="card-body">
-              <h5 class="card-title">Pikachu</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            </div>
-          </div>
+          <CardPokemonSelected
+          :name="pokemonSelected?.name"
+          :xp="pokemonSelected?.base_experience"
+          :height="pokemonSelected?.height"
+          :img="pokemonSelected?.sprites.other.dream_world.front_default"
+          />
         </div>
 
 
@@ -56,7 +62,9 @@ const pokemonsFiltered = computed(()=>{
               </div>
 
               <ListPokemons v-for="pokemon in pokemonsFiltered" :key="pokemon.name" :name="pokemon.name"
-                :urlBaseSvg="urlBaseSvg + pokemon.url.split('/')[6] + '.svg'"></ListPokemons>
+                :urlBaseSvg="urlBaseSvg + pokemon.url.split('/')[6] + '.svg'"
+                @click="selectPokemon(pokemon)"
+                ></ListPokemons>
             </div>
           </div>
         </div>
