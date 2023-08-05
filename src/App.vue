@@ -2,14 +2,16 @@
 import { ref } from 'vue'
 
 let num = ref(0)
+
 </script>
 
 <template>
+  <!--Navbar-->
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
       <router-link class="navbar-brand" to="/">
         <img src="https://cdn-icons-png.flaticon.com/512/188/188987.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
-        PokeVite
+        PokeVue
       </router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -26,6 +28,7 @@ let num = ref(0)
       </div>
     </div>
   </nav>
+  
   <!--CONTENT-->
   <div class="main">
     <router-view></router-view>
