@@ -1,13 +1,25 @@
 <script setup>
-import { onMounted, reactive, ref } from 'vue';
+import { onMounted, reactive, ref, computed } from 'vue';
 import ListPokemons from '../components/ListPokemons.vue';
+let urlBaseSvg = ref("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/");
 
 let pokemons = reactive({ name: [] });
+let searchPokemonField = ref("")
 
 onMounted(() => {
   fetch("https://pokeapi.co/api/v2/pokemon?offset=0&limit=200")
     .then(res => res.json())
     .then(res => pokemons.name = res.results);
+})
+
+const pokemonsFiltered = computed(()=>{
+  if(pokemons.name && searchPokemonField.value){
+    return pokemons.name.filter(pokemon=>
+      pokemon.name.toLowerCase().includes(searchPokemonField.value.toLowerCase())
+    )
+  } console.log(pokemonsFiltered)
+  return pokemons.name;
+  
 })
 
 </script>
@@ -30,16 +42,25 @@ onMounted(() => {
           </div>
         </div>
 
-        
+
         <div class="col-sm-12 col-md-6">
           <div class="card">
-         <ListPokemons v-for="pokemon in pokemons.name"
-         :key="pokemon.name"
-         :name="pokemon.name"></ListPokemons>
+            <div class="card-body row">
 
+              <div class="mb-3">
+                <label hidden for="searchPokemonField" class="form-label">Pesquisar Pokemon</label>
+
+                <input v-model="searchPokemonField" 
+                type="text" class="form-control" id="searchPokemonField" placeholder="Pesquisar...">
+
+              </div>
+
+              <ListPokemons v-for="pokemon in pokemonsFiltered" :key="pokemon.name" :name="pokemon.name"
+                :urlBaseSvg="urlBaseSvg + pokemon.url.split('/')[6] + '.svg'"></ListPokemons>
+            </div>
+          </div>
         </div>
-        </div>
-        
+
       </div>
     </div>
   </main>
