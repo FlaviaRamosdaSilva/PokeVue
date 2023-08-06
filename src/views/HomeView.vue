@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, reactive, ref, computed } from 'vue';
+import ZingChartVue from 'zingchart-vue';
 import ListPokemons from '../components/ListPokemons.vue';
 import CardPokemonSelected from '../components/CardPokemonSelected.vue';
 let urlBaseSvg = ref("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/");
