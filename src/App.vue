@@ -10,10 +10,12 @@ let num = ref(0)
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container-fluid">
       <router-link class="navbar-brand" to="/">
-        <img src="https://cdn-icons-png.flaticon.com/512/188/188987.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+        <img src="https://cdn-icons-png.flaticon.com/512/188/188987.png" alt="Logo" width="30" height="24"
+          class="d-inline-block align-text-top">
         PokeVue
       </router-link>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -28,18 +30,24 @@ let num = ref(0)
       </div>
     </div>
   </nav>
-  
+
   <!--CONTENT-->
   <div class="main">
     <router-view></router-view>
   </div>
 
-    <footer class="bg-primary text-light">
-      <div>Created by Flávia Ramos - Desing in Aug/2023</div>
-    </footer>
+  <footer class="bg-primary text-light">
+    <div>Created by Flávia Ramos - Desing in Aug/2023</div>
+  </footer>
 </template>
 
-<style scoped>
+<style>
+body {
+  height: 100vh;
+  background: rgb(38, 237, 31);
+  background: radial-gradient(circle, rgba(57, 151, 54, 0.922) 0%, rgba(59, 124, 146, 0.919) 100%);
+}
+
 footer {
   position: fixed;
   bottom: 0;
