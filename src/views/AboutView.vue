@@ -1,6 +1,14 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
+  <div class="container mt-4 text-body-secondary">
+    <div class="card">
+    <h1 class="text-center">PokeVue</h1>
+
+    <div class="card-body">
+Esta página foi desenvolvida para aprendizado da utilização do framework Vue.js com base nos vídeos do you tube 
+Yuri Marcon. Foi realizado com Vite 
+    </div>
+
+  </div>
   </div>
 </template>
 

@@ -11,13 +11,11 @@ const pokemon = defineProps([ "name", "xp", "height", "img", "loading" ]);
         v-if="pokemon.name"
         :src="pokemon.img"
         class="card-img-top pt-2"
-        height="250"
         :alt="pokemon.name">
 
         <img
         v-else src="../assets/egg_pokemon.svg"
         class="card-img-top pt-2"
-        height="250"
         alt="????">
         
         <div class="card-body">
@@ -46,7 +44,19 @@ const pokemon = defineProps([ "name", "xp", "height", "img", "loading" ]);
     height: 75vh;
     background: rgb(234, 234, 242);
     background: radial-gradient(circle, rgba(210, 210, 235, 0.821) 9%, rgba(116, 221, 195, 0.88) 51%, rgba(171, 197, 168, 0.888) 94%);
-    
+}
+.CardPokemonSelected img {
+    height: 250px;
 }
 
+@media (max-width: 768px) {
+    .CardPokemonSelected {
+    height: 30vh;
+    width: 40%;
+    margin: 0 auto 10px auto;
+}
+.CardPokemonSelected img {
+    height: 70px;
+}
+}
 </style>
