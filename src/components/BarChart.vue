@@ -1,25 +1,21 @@
 
 
 <script setup>
-import { defineProps } from 'vue';
 import { Bar } from 'vue-chartjs'
-import { Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale } from 'chart.js'
-
-const pokemon = defineProps([ "name", "xp", "height", "img", "loading" ]);
+import { Chart as ChartJS, Title, Tooltip, Legend} from 'chart.js'
+import {BarElement, CategoryScale, LinearScale } from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
-const dataValues = [pokemon.xp];
-const NamesPokemon = [pokemon.name];
-
-urlPokemon = ref()
-
-console.log (dataValues)
+let dataValues = [15, 25]
 
 const chartData = {
-  labels: [ { NamesPokemon } ],
-  datasets: [{ data: dataValues }]
-};
+  labels: [  "janeiro", "fevereiro"  ],
+  datasets: [{
+    data: dataValues,
+  backgroundColor: 'red'
+}],
+  };
 
 const chartOptions = {
   responsive: true,
@@ -37,7 +33,7 @@ const chartOptions = {
     },
     scales:{
     y: [{ticks: {min: 0, max: 350 }}] //You can repeat the same for X-axis if it contains integers. 
- }
+ } 
   }
   };
 
@@ -45,8 +41,8 @@ const chartOptions = {
 </script>
 
 <template>
-  <div>
-  <Bar
+  <div class="bar">
+  <Bar 
     id="my-chart-id"
     :options="chartOptions"
     :data="chartData"
@@ -55,7 +51,7 @@ const chartOptions = {
 </template>
 
 <style scoped>
-div {
+.bar {
   height: 350px;
   width: 350px;
 }

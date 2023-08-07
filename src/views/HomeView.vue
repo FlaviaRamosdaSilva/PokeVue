@@ -2,6 +2,7 @@
 import { onMounted, reactive, ref, computed } from 'vue';
 import ListPokemons from "../components/ListPokemon.vue";
 import CardPokemonSelected from '../components/CardPokemonSelect.vue';
+const pokemon = defineProps([ "name", "xp", "height", "img", "loading" ]); //para puxar o dado do XP
 
 let urlBaseSvg = ref("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/");
 
@@ -17,24 +18,26 @@ onMounted(() => {
     .then(res => pokemons.name = res.results);
 })
 
-const pokemonsFiltered = computed(()=>{
-  if(pokemons.name && searchPokemonField.value){
-    return pokemons.name.filter(pokemon=>
+const pokemonsFiltered = computed(() => {
+  if (pokemons.name && searchPokemonField.value) {
+    return pokemons.name.filter(pokemon =>
       pokemon.name.toLowerCase().includes(searchPokemonField.value.toLowerCase())
     )
-  } 
+  }
   return pokemons.name;
 })
 
-const selectPokemon = async (pokemon) =>{
+const selectPokemon = async (pokemon) => {
   loading.value = true;
   await fetch(pokemon.url)
-  .then(res => res.json())  
-  .then(res => pokemonSelected.value = res)
-  .catch(err => alert(err))
-  .finally( ()=> loading.value = false)
+    .then(res => res.json())
+    .then(res => pokemonSelected.value = res)
+    .catch(err => alert(err))
+    .finally(() => loading.value = false)
   console.log(pokemonSelected.value)
- }
+}
+
+
 
 </script>
 
@@ -45,13 +48,9 @@ const selectPokemon = async (pokemon) =>{
       <div class="row mt-4">
 
         <div class="col-sm-12 col-md-6">
-          <CardPokemonSelected
-          :name="pokemonSelected?.name"
-          :xp="pokemonSelected?.base_experience"
-          :height="pokemonSelected?.height"
-          :img="pokemonSelected?.sprites.other.dream_world.front_default"
-          :loading="loading"
-          />
+          <CardPokemonSelected :name="pokemonSelected?.name" :xp="pokemonSelected?.base_experience"
+            :height="pokemonSelected?.height" :img="pokemonSelected?.sprites.other.dream_world.front_default"
+            :loading="loading" />
         </div>
 
 
@@ -62,34 +61,38 @@ const selectPokemon = async (pokemon) =>{
               <div class="mb-3">
                 <label hidden for="searchPokemonField" class="form-label">Pesquisar Pokemon</label>
 
-                <input v-model="searchPokemonField" 
-                type="text" class="form-control" id="searchPokemonField" placeholder="Pesquisar...">
+                <input v-model="searchPokemonField" type="text" class="form-control" id="searchPokemonField"
+                  placeholder="Pesquisar...">
 
               </div>
 
               <ListPokemons v-for="pokemon in pokemonsFiltered" :key="pokemon.name" :name="pokemon.name"
-                :urlBaseSvg="urlBaseSvg + pokemon.url.split('/')[6] + '.svg'"
-                @click="selectPokemon(pokemon)"
-                ></ListPokemons>
+                :urlBaseSvg="urlBaseSvg + pokemon.url.split('/')[6] + '.svg'" @click="selectPokemon(pokemon)">
+              </ListPokemons>
             </div>
           </div>
         </div>
 
       </div>
+
+      
+
     </div>
   </main>
 </template>
 
 <style scoped>
+
+
 .card-list {
   max-height: 75vh;
   overflow-y: scroll;
   overflow-x: hidden;
 }
+
 @media (max-width: 768px) {
   .card-list {
-  max-height: 45vh;
+    max-height: 45vh;
   }
 }
-
 </style>
