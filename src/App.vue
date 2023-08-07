@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-import ZingChartVue from 'zingchart-vue';
+
 
 let num = ref(0)
 

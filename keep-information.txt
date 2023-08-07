@@ -4,3 +4,6 @@
 {{ pokemon.name }}
 </li>
 </ul>
+
+
+ {{ pokemon.url.split('/')[6] }} = ID

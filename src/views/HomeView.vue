@@ -1,8 +1,8 @@
 <script setup>
 import { onMounted, reactive, ref, computed } from 'vue';
-import ZingChartVue from 'zingchart-vue';
-import ListPokemons from '../components/ListPokemons.vue';
-import CardPokemonSelected from '../components/CardPokemonSelected.vue';
+import ListPokemons from "../components/ListPokemon.vue";
+import CardPokemonSelected from '../components/CardPokemonSelect.vue';
+
 let urlBaseSvg = ref("https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/");
 
 let pokemons = reactive({ name: [] });
@@ -34,7 +34,7 @@ const selectPokemon = async (pokemon) =>{
   .catch(err => alert(err))
   .finally( ()=> loading.value = false)
   console.log(pokemonSelected.value)
-}
+ }
 
 </script>
 
