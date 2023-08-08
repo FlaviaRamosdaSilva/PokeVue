@@ -13,7 +13,7 @@ const chartData = {
   labels: [  "janeiro", "fevereiro"  ],
   datasets: [{
     data: dataValues,
-  backgroundColor: 'red'
+  backgroundColor: 'black'
 }],
   };
 
