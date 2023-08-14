@@ -1,26 +1,6 @@
 
 <script setup>
-import BarChart from '../components/BarChart.vue';
 
-import { onMounted, reactive, computed, ref } from 'vue';
-
-// Gráfico //
-const components = { BarChart };
-const name = 'AboutView';
-
-let urlBaseId = ref("https://pokeapi.co/api/v2/pokemon/" + 3);
-console.log(urlBaseId)
-
-
-let pokemons = reactive({ name: [] });
-let pokemonId = reactive({ id: [] });
-
-
-onMounted(() => {
-  fetch("https://pokeapi.co/api/v2/pokemon?limit=200&offset=0")
-    .then(res => res.json())
-    .then(res => pokemons.name = res.results)
-})
 
 </script>
 
@@ -28,10 +8,17 @@ onMounted(() => {
 <template>
   <div class="container mt-4 text-body-secondary">
     <div class="card">
-      <h1 class="text-center">Gráficos da PokeVue</h1>
-
+      <h1 class="text-center">PokeVue</h1>
+      <br>  
       <div class="card-body">
-        Abaixo seguem os gráficos dos pokemons que listamos na página de Home.
+       <b>Composições técnicas do site:</b><br> 
+<br>
+O site foi desenvolvido com Vue3 adicionado a ferramenta Vite, o framework de CSS Bootstrap e a biblioteca ChartJS para realizar os gráficos. Para animação do Card utilizamos também a biblioteca Animate CSS.<br>
+<br>
+
+<b>Link do github:</b> <a href="https://github.com/FlaviaRamosdaSilva/PokeVue">PokeVue</a><br> 
+<br>
+
       </div>
       <div class="container">
 
@@ -46,8 +33,6 @@ onMounted(() => {
     </div>
   </div>
 </template>
-
-
 
 <style>
 @media (min-width: 1024px) {
