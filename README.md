@@ -3,7 +3,7 @@
 <p>Este projeto foi um desafio que recebi em um processo seletivo em que fui aprovada para fase seguinte.
 Recebi o desafio de realizá-lo no framework Vue, o qual eu não conhecia. Portanto meu desafio era não só realizar o site, como aprender o Vue antes e durante a execução da Pokedex. Me senti muito orgulhosa de ter conseguido realizar o objetivo no tempo estipulado e ter sido aprovada para as próximas fases. Infelizmente em etapas posteriores o pessoal seguiu com outro candidato, mas ficou a experiência e a demonstração do meu poder de aprendizado.<br>
 <br>
-O site foi desenvolvido com Vue3 adicionado a ferramenta Vite e o framework de CSS Bootstrap. Para animação do Card utilizei também a biblioteca Animate CSS.</p>
+O site foi desenvolvido com Vue3 adicionado a ferramenta Vite e o framework de CSS Bootstrap. Para animação do Card utilizei também a biblioteca Animate CSS. Os dados dos Pokemons são da API  https://pokeapi.co/.</p>
 
 ## :computer: Tecnologias utilizadas:
 
