@@ -14,7 +14,7 @@ O site foi desenvolvido com Vue3 adicionado a ferramenta Vite e o framework de C
 
 
 ## :rocket: Visite o site (projeto publicado):
-:fast_forward:<a href="......"> Pokevue</a>
+:fast_forward:<a href="https://pokevue-flavia-ramos.netlify.app/"> Pokevue</a>
 
 ## :flower_playing_cards: Imagens do Projeto:
 
