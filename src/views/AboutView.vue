@@ -13,7 +13,7 @@
       <div class="card-body">
        <b>Composições técnicas do site:</b><br> 
 <br>
-O site foi desenvolvido com Vue3 adicionado a ferramenta Vite, o framework de CSS Bootstrap e a biblioteca ChartJS para realizar os gráficos. Para animação do Card utilizamos também a biblioteca Animate CSS.<br>
+O site foi desenvolvido com Vue3 adicionado a ferramenta Vite e o framework de CSS Bootstrap. Para animação do Card utilizamos também a biblioteca Animate CSS.<br>
 <br>
 
 <b>Link do github:</b> <a href="https://github.com/FlaviaRamosdaSilva/PokeVue">PokeVue</a><br> 
